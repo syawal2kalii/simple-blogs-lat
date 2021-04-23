@@ -1,1 +1,51 @@
 {% extends "base.html" %}
+<div>{% block title %} {{title}} {% endblock title %} Home</div>
+<div>
+  {% block content %}
+
+  <div id="blog" class="blog-area">
+    <div class="container">
+      <div class="row">
+        {% for post in posts %}
+        <div class="col-sm-12 col-md-4">
+          <div class="single-blog">
+            <div class="card">
+              <div class="overflow">
+                <img
+                  style="height: 300px"
+                  class="card-img-top"
+                  src=""
+                  alt="Card image cap"
+                />
+              </div>
+              <div class="card-body">
+                <a href="#"
+                  ><p class="blog-date">
+                    Dec 17 2019 <br />
+                    Posted by {{post.posted}}
+                  </p>
+                </a>
+
+                <a href="#"
+                  ><h6
+                    class="card-title text-dark text-uppercase font-weight-bold"
+                  >
+                    {{post.title}}
+                  </h6></a
+                >
+                <p class="card-text mb-30"></p>
+                <a
+                  href="{% url 'detail' post.id %}"
+                  class="btn btn-outline-primary style-3 text-dark"
+                  >Read More</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endblock content %}
+</div>

@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% block title %}
+<p>add</p>
+{% endblock title %}
+<div>
+  {% block content %}
+  <form action="" method="post">
+    {% csrf_token %}
+    <div class="container">
+      <div class="row justify-content-md-center">
+        <div class="col-md-6">
+          {{article_form}}
+          <button class="btn btn-primary mt-2" type="submit">OK</button>
+        </div>
+      </div>
+    </div>
+  </form>
+  {% endblock content %}
+</div>
