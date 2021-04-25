@@ -1,10 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import blog.models as datadb
 import sys
-from .forms import UserForm, ArticleForm
+from .forms import UserForm, ArticleForm, LoginForm
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import make_password
 from .models import article
+from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 # Create your views here.
 
 
@@ -67,4 +68,14 @@ def addUser(request):
 
 
 def login(request):
-    return render(request, 'login.html')
+    if request.method == 'POST':
+        user = authenticate(
+            request, username=request.POST['username'], password=request.POST['password'])
+        if user is not None:
+            auth_login(request, user)
+    return render(request, 'login.html', context={'login_form': LoginForm()})
+
+
+def logout(request):
+    auth_logout(request)
+    return redirect('article')

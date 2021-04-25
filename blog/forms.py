@@ -23,3 +23,12 @@ class ArticleForm(forms.Form):
         attrs={'placeholder': 'content', 'class': 'form-control'}), required=False)
     category = forms.ChoiceField(widget=forms.Select(attrs={'class': 'form-control'}), choices=[
                                  ('politik', 'politik'), ('agama', 'agama'), ('education', 'education')], required=False)
+
+
+class LoginForm(forms.Form):
+    """User definition."""
+
+    # TODO: Define form fields here
+    username = forms.CharField(max_length=255, required=False)
+    password = forms.CharField(
+        widget=forms.PasswordInput, max_length=255, required=False)
