@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.hashers import make_password
 from .models import article
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
@@ -76,6 +77,7 @@ def login(request):
     return render(request, 'login.html', context={'login_form': LoginForm()})
 
 
+@login_required
 def logout(request):
     auth_logout(request)
     return redirect('article')

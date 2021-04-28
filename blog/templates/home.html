@@ -1,4 +1,5 @@
-{% extends "base.html" %}
+{% extends "base.html" %} 
+{% load static %}
 <div>{% block title %} {{title}} {% endblock title %} Home</div>
 <div>
   {% block content %}
@@ -11,12 +12,7 @@
           <div class="single-blog">
             <div class="card">
               <div class="overflow">
-                <img
-                  style="height: 300px"
-                  class="card-img-top"
-                  src=""
-                  alt="Card image cap"
-                />
+                <img style="height: 300px" class="card-img-top" src="{% static 'img/berita2.jpeg' %}" alt="Card image cap" />
               </div>
               <div class="card-body">
                 <a href="#"
