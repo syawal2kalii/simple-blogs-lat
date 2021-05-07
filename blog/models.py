@@ -19,6 +19,10 @@ class article(models.Model):
     def __str__(self):
         return str(self.title)
 
+    def delete(self, *args, **kwargs):
+        self.imgurl.delete()
+        super().delete(*args, **kwargs)
+
     class Meta:
         db_table = ''
         managed = True

@@ -9,4 +9,5 @@ urlpatterns = [
     path('login/', views.login, name='login'),
     path('logout/', views.logout, name='logout'),
     path('update/<str:id>', views.updateArticle, name='update'),
+    path('hapus/<str:id>', views.hapusArticle, name='hapus'),
 ]

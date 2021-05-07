@@ -60,6 +60,12 @@ def addArticle(request):
     return render(request, 'addarticle.html', context)
 
 
+def hapusArticle(request, id):
+    art = article.objects.get(id=id)
+    art.delete()
+    return redirect('article')
+
+
 def updateArticle(request, id):
     art = article.objects.get(id=id)
     form = ArticleForm(request.POST or None, instance=art)

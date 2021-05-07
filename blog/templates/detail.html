@@ -27,7 +27,7 @@
       <hr />
 
       <a type="button" href="{% url 'update' posts.id %}" class="btn btn-outline-primary">Edit</a>
-      <a type="button" href="" class="btn btn-outline-danger">hapus</a>
+      <a type="button" href="{% url 'hapus' posts.id %}" class="btn btn-outline-danger">hapus</a>
 
       <!-- Comments Form -->
       <div class="card my-4">
