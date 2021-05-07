@@ -60,8 +60,24 @@ def addArticle(request):
     return render(request, 'addarticle.html', context)
 
 
-def updateArticle(request):
-    return render(request, 'update.html')
+def updateArticle(request, id):
+    art = article.objects.get(id=id)
+    form = ArticleForm(request.POST or None, instance=art)
+    # data = {
+    #     'nama':}
+    if request.method == 'POST':
+        form = ArticleForm(request.POST or None, request.FILES, instance=art)
+        if form.is_valid():
+            form.save()
+            return redirect('article')
+        else:
+            print("gagal")
+            return redirect('article')
+    context = {
+        'article_form': ArticleForm(request.POST or None, instance=art),
+        'article': art
+    }
+    return render(request, 'update.html', context)
 
 
 def addUser(request):
