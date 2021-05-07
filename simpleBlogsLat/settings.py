@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'simpleBlogsLat.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django-article',
+        'NAME': 'article',
         'USER': 'syawal',
         'PASSWORD': 'Testestes_123',
         'HOST': 'localhost',
@@ -126,9 +126,8 @@ USE_TZ = True
 STATIC_ROOT = "/home/anonym/static/"
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
-
+    os.path.join(BASE_DIR, 'static'),
 ]
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/img')
 MEDIA_URL = '/media/'

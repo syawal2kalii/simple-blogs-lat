@@ -9,7 +9,8 @@ class article(models.Model):
     content = models.TextField()
     category = models.CharField(max_length=255)
     slug = models.TextField()
-    imgurl = models.TextField()
+    imgurl = models.ImageField(
+        null=True, blank=True, upload_to='pictures', verbose_name='imgurl')
     created_at = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     # user relation
@@ -19,7 +20,7 @@ class article(models.Model):
         return str(self.title)
 
     class Meta:
-        db_table = 'home_article'
+        db_table = ''
         managed = True
         verbose_name = 'Article'
         verbose_name_plural = 'Articles'

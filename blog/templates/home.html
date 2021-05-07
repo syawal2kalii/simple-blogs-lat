@@ -12,7 +12,7 @@
           <div class="single-blog">
             <div class="card">
               <div class="overflow">
-                <img style="height: 300px" class="card-img-top" src="{% static 'img/berita2.jpeg' %}" alt="Card image cap" />
+                <img style="height: 300px" class="card-img-top" src="{{post.imgurl.url}}" alt="Card image cap" />
               </div>
               <div class="card-body">
                 <a href="#"
@@ -45,3 +45,4 @@
   </div>
   {% endblock content %}
 </div>
+<img style="height: 300px" class="card-img-top" src="{{post.imgurl.url}}" alt="Card image cap" />

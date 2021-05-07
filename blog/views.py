@@ -31,7 +31,7 @@ def home(request):
         #     }
         # ]
     }
-    print(len(context['posts']))
+    # print()
     return render(request, 'home.html', context)
 
 
@@ -39,17 +39,20 @@ def detailArticle(request, pk):
     print(pk)
     # sys.exit()
     context = {
-        'posts': datadb.article.objects.get(id=1)
+        'posts': datadb.article.objects.get(id=pk)
     }
     return render(request, 'detail.html', context)
 
 
 def addArticle(request):
     if request.method == 'POST':
+        # ArticleForm(request.POST, request.FILES)
+        print('data ', make_password(str(request.FILES['imgurl'])))
         article.objects.create(
             title=request.POST['title'],
             content=request.POST['content'],
-            category=request.POST['category']
+            category=request.POST['category'],
+            imgurl=request.FILES['imgurl'],
         )
     context = {
         'article_form': ArticleForm()}
@@ -57,12 +60,17 @@ def addArticle(request):
     return render(request, 'addarticle.html', context)
 
 
+def updateArticle(request):
+    return render(request, 'update.html')
+
+
 def addUser(request):
     if request.method == 'POST':
         User.objects.create(
             username=request.POST['username'],
             password=make_password(request.POST['password']),
-            email=request.POST['email']
+            email=request.POST['email'],
+
         )
 
     return render(request, 'adduser.html', context={'user_form': UserForm()})
